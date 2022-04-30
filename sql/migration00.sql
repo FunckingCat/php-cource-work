@@ -1,0 +1,10 @@
+DROP DATABASE IF EXISTS sorter;
+
+CREATE DATABASE sorter;
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+
+);
+
+
