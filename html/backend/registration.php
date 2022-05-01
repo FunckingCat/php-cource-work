@@ -25,6 +25,19 @@
     }
     else
     {
-
+        $userInDb = exec_query('SELECT * FROM Users WHERE email = ' . add_quotes($login));
+        if ($userInDb->num_rows < 1)
+            header('Location: ../index.php');
+        else
+        {
+            $row = $userInDb->fetch_assoc();
+            if ($pswd != $row['password'])
+            header('Location: ../index.php');
+            else{
+                $_SESSION['userId'] = $row['id'];
+                $_SESSION['username'] = $username;
+                $_SESSION['login'] = $login;
+                header('Location: ../search.php');
+            }
+        }
     }
-//    header('Location: ../search.php');

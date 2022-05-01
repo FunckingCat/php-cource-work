@@ -39,7 +39,7 @@
                 <form method="post" action="./backend/registration.php">
 
                     <div class="form-outline mb-4">
-                        <input type="email" id="loginUsername" name="username" class="form-control" />
+                        <input type="email" id="loginUsername" name="email" class="form-control" />
                         <label class="form-label" for="loginUsername">Login (email)</label>
                     </div>
 
@@ -61,7 +61,7 @@
                     </div>
 
                     <div class="form-outline mb-4">
-                        <input type="emial" id="registerUsername" name="email" class="form-control" />
+                        <input type="email" id="registerUsername" name="email" class="form-control" />
                         <label class="form-label" for="registerUsername">Email</label>
                     </div>
 
