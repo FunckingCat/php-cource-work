@@ -10,6 +10,8 @@ function getChannels () { // Возвращает список всех суще
 
 function getTags () { // Возвращает список всех существующих в базе тэгов
     $tagsList = ['tag1', 'tag2', 'tag3'];
+
+    $sql = exec_query('SELECT');
     return $tagsList;
 }
 
@@ -18,18 +20,25 @@ function getCurrentUsername () { // Возвращает имя пользова
     return $currentUsername;
 }
 
-function getMessagesByChannelName ($name) {
-    
-    $body = 'I\'m beginning\' to feel like a Rap God';
-    $hashtag = 'songs_lyrics';
-    $owner = 'Eminem';
-    $channel = 'rap';
-    $private = true;
+function getMessages($channelName = '', $tag = '')
+{
+    $message1 = [
+        'body' => 'I\'m beginnin\' to feel like a Rap God',
+        'hashtag' => 'songs_lyrics',
+        'owner' => 'Eminem',
+        'channel' => 'rap',
+        'private' => 'true'
+    ];
+    $message2 = [
+        'body' => 'usually i\'m drug-free, but shit i\'m with the homies ',
+        'hashtag' => 'songs_lyrics',
+        'owner' => 'Kendrick Lamar',
+        'channel' => 'rap',
+        'private' => 'false'
+    ];
 
-    $message1 = [$body, $hashtag, $owner, $channel, $private=false];
-    $message2 = ['usually i\'m drug-free, but, shit, i\'m with the homies ', 'songs_lyrics', 'Kendrick Lamar', 'rap', false];
-
-    return [$message1, $message2];
+    $messages = [$message1, $message2];
+    return $messages;
 }
 
 function addUser($username, $login, $password)
