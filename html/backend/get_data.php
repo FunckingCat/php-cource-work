@@ -2,26 +2,52 @@
 
 include_once 'database.php';
 
-function getChannels () { // Возвращает список всех существующих каналов
-    $channelsList = ['channel name 1', 'channel name 2', 'channel name 3']; 
-    return $channelsList; 
+function getTopics()
+{ // Возвращает список всех существующих в базе "областей знаний"
+    $result = exec_query('SELECT title FROM Topics;');
+    $res = [];
+    while ($row = $result->fetch_assoc()) {
+        $res[] = $row['title'];
+    }
+    return $res;
+}
+
+function getChannels()
+{ // Возвращает список всех существующих в базе каналов
+    $result = exec_query('SELECT name from Channels;');
+    $res = [];
+    while ($row = $result->fetch_assoc()) {
+        $res[] = $row['name'];
+    }
+    return $res;
 }
 
 
-function getTags () { // Возвращает список всех существующих в базе тэгов
-    $tagsList = ['tag1', 'tag2', 'tag3'];
+function getTags()
+{ // Возвращает список всех существующих в базе тэгов
+    $result = exec_query('SELECT name FROM Hashtags;');
+    $res = [];
+    while ($row = $result->fetch_assoc()) {
+        $res[] = $row['name'];
+    }
 
-    $sql = exec_query('SELECT');
-    return $tagsList;
+    return $res;
 }
 
-function getCurrentUsername () { // Возвращает имя пользователя текущей сессии (опционально, можно вырезать)
-    $currentUsername = 'Богдан';
-    return $currentUsername;
-}
-
-function getMessages($channelName = '', $tag = '')
+function getMessages($channelName = '', $tag = '', $topic='')
 {
+    if (!$channelName && !$tag && !$topic) {
+    $message1 = [
+        'body' => 'I\'m beginnin\' to feeeel like a Rap God',
+        'hashtag' => 'songs_lyrics',
+        'owner' => 'Eminem',
+        'channel' => 'rap',
+        'private' => 'true'
+    ];
+
+} else {
+
+
     $message1 = [
         'body' => 'I\'m beginnin\' to feel like a Rap God',
         'hashtag' => 'songs_lyrics',
@@ -29,6 +55,7 @@ function getMessages($channelName = '', $tag = '')
         'channel' => 'rap',
         'private' => 'true'
     ];
+}
     $message2 = [
         'body' => 'usually i\'m drug-free, but shit i\'m with the homies ',
         'hashtag' => 'songs_lyrics',
@@ -49,4 +76,5 @@ function addUser($username, $login, $password)
     $prep->execute();
     $connection->close();
 }
+
 ?>
