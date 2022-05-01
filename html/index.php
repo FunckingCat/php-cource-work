@@ -6,156 +6,55 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="./style/style.css">
-	<link rel="stylesheet" href="./style/bootstrap_css/bootstrap.css">
-	<link rel="stylesheet" href="./style/bootstrap_js/bootstrap.js">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet">
 	<title>Docker PHP template</title>
 </head>
 
 <body>
+	<header class="px-2">
+		<nav class="navbar navbar-light bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand">PHP course work</a>
+				<a type="button" class="mt-4 mb-4 btn btn-primary" data-mdb-toggle="modal" href="./login_page/login.php" \>
+					<?php
+					$auth = 0;
+					if ($auth == 0) { // Авторизация где-то здесь
+						echo "Sign in";
+					} else {
+						echo "Log out";
+					}
+
+					?>
+				</a>
+			</div>
+		</nav>
+	</header>
 
 
-	<!-- Pills navs -->
-	<ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
-		<li class="nav-item" role="presentation">
-			<a class="nav-link active" id="tab-login" data-mdb-toggle="pill" href="#pills-login" role="tab" aria-controls="pills-login" aria-selected="true">Login</a>
-		</li>
-		<li class="nav-item" role="presentation">
-			<a class="nav-link" id="tab-register" data-mdb-toggle="pill" href="#pills-register" role="tab" aria-controls="pills-register" aria-selected="false">Register</a>
-		</li>
-	</ul>
-	<!-- Pills navs -->
 
-	<!-- Pills content -->
-	<div class="tab-content">
-		<div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-			<form>
-				<div class="text-center mb-3">
-					<p>Sign in with:</p>
-					<button type="button" class="btn btn-link btn-floating mx-1">
-						<i class="fab fa-facebook-f"></i>
-					</button>
-
-					<button type="button" class="btn btn-link btn-floating mx-1">
-						<i class="fab fa-google"></i>
-					</button>
-
-					<button type="button" class="btn btn-link btn-floating mx-1">
-						<i class="fab fa-twitter"></i>
-					</button>
-
-					<button type="button" class="btn btn-link btn-floating mx-1">
-						<i class="fab fa-github"></i>
-					</button>
-				</div>
-
-				<p class="text-center">or:</p>
-
-				<!-- Email input -->
-				<div class="form-outline mb-4">
-					<input type="email" id="loginName" class="form-control" />
-					<label class="form-label" for="loginName">Email or username</label>
-				</div>
-
-				<!-- Password input -->
-				<div class="form-outline mb-4">
-					<input type="password" id="loginPassword" class="form-control" />
-					<label class="form-label" for="loginPassword">Password</label>
-				</div>
-
-				<!-- 2 column grid layout -->
-				<div class="row mb-4">
-					<div class="col-md-6 d-flex justify-content-center">
-						<!-- Checkbox -->
-						<div class="form-check mb-3 mb-md-0">
-							<input class="form-check-input" type="checkbox" value="" id="loginCheck" checked />
-							<label class="form-check-label" for="loginCheck"> Remember me </label>
-						</div>
-					</div>
-
-					<div class="col-md-6 d-flex justify-content-center">
-						<!-- Simple link -->
-						<a href="#!">Forgot password?</a>
-					</div>
-				</div>
-
-				<!-- Submit button -->
-				<button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
-
-				<!-- Register buttons -->
-				<div class="text-center">
-					<p>Not a member? <a href="#!">Register</a></p>
-				</div>
-			</form>
-		</div>
-		<div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-			<form>
-				<div class="text-center mb-3">
-					<p>Sign up with:</p>
-					<button type="button" class="btn btn-link btn-floating mx-1">
-						<i class="fab fa-facebook-f"></i>
-					</button>
-
-					<button type="button" class="btn btn-link btn-floating mx-1">
-						<i class="fab fa-google"></i>
-					</button>
-
-					<button type="button" class="btn btn-link btn-floating mx-1">
-						<i class="fab fa-twitter"></i>
-					</button>
-
-					<button type="button" class="btn btn-link btn-floating mx-1">
-						<i class="fab fa-github"></i>
-					</button>
-				</div>
-
-				<p class="text-center">or:</p>
-
-				<!-- Name input -->
-				<div class="form-outline mb-4">
-					<input type="text" id="registerName" class="form-control" />
-					<label class="form-label" for="registerName">Name</label>
-				</div>
-
-				<!-- Username input -->
-				<div class="form-outline mb-4">
-					<input type="text" id="registerUsername" class="form-control" />
-					<label class="form-label" for="registerUsername">Username</label>
-				</div>
-
-				<!-- Email input -->
-				<div class="form-outline mb-4">
-					<input type="email" id="registerEmail" class="form-control" />
-					<label class="form-label" for="registerEmail">Email</label>
-				</div>
-
-				<!-- Password input -->
-				<div class="form-outline mb-4">
-					<input type="password" id="registerPassword" class="form-control" />
-					<label class="form-label" for="registerPassword">Password</label>
-				</div>
-
-				<!-- Repeat Password input -->
-				<div class="form-outline mb-4">
-					<input type="password" id="registerRepeatPassword" class="form-control" />
-					<label class="form-label" for="registerRepeatPassword">Repeat password</label>
-				</div>
-
-				<!-- Checkbox -->
-				<div class="form-check d-flex justify-content-center mb-4">
-					<input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked aria-describedby="registerCheckHelpText" />
-					<label class="form-check-label" for="registerCheck">
-						I have read and agree to the terms
-					</label>
-				</div>
-
-				<!-- Submit button -->
-				<button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
-			</form>
-		</div>
+	<div class="d-flex justify-content-center add-link">
+		<a type="button" class="mt-2 mb-4 btn btn-primary" href="./add_message_page/add_message.php">
+			Add message
+		</a>
 	</div>
-	<!-- Pills content -->
+	<main class="container d-flex">
+		<div class="container">
+			<div class="input-group mt-2 mb-4">
+				<input type="search" class="form-control rounded" placeholder="type here a tag or a field of expertise of the message you searching" aria-label="Search" aria-describedby="search-addon" />
+				<button type="button" class="btn btn-outline-primary">search</button>
+			</div>
 
+			<div class="mt-2 border border-2 ps-3">
+				<?php
+				echo "thread with all the messages in there" // Все доступные сообщения здесь 
+				?>
 
+			</div>
+		</div>
+	</main>
+
+	<!-- MDB -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
 
 	<?php include('backend/script.php') ?>
 	<script src="./script/script.js"></script>
