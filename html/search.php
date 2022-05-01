@@ -17,61 +17,66 @@
 	<title>Docker PHP template</title>
 </head>
 
+
 <body>
 
-	<header class="px-2">
-		<nav class="navbar navbar-light bg-light">
-			<div class="container-fluid">
-				<a class="navbar-brand">PHP course work</a>
-				<a type="button" class="mt-4 mb-4 btn btn-primary" data-mdb-toggle="modal" href="./index.php" \>
-					Log out
-				</a>
-			</div>
-		</nav>
-	</header>
+<header class="px-2">
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand">PHP course work</a>
+            <a type="button" class="mt-4 mb-4 btn btn-primary" data-mdb-toggle="modal" href="./index.php" \>
+                Log out
+            </a>
+        </div>
+    </nav>
+</header>
 
 
 
-	<div class="d-flex justify-content-center add-link">
-		<a type="button" class="mt-2 mb-4 btn btn-primary" href="./add_message.php">
-			Add message
-		</a>
-	</div>
-	<main class="container d-flex">
-		<div class="container">
-			<div class="input-group mt-2 mb-4">
-				<input type="search" class="form-control rounded" placeholder="type here a tag or a field of expertise of the message you searching" aria-label="Search" aria-describedby="search-addon" />
-			</div>
+<div class="d-flex justify-content-center add-link">
+    <a type="button" class="mt-2 mb-4 btn btn-primary" href="./add_message.php">
+        Add message
+    </a>
+</div>
+<main class="container d-flex">
+    <div class="container">
+        <div class="input-group mt-2 mb-4">
+            <input type="search" class="form-control rounded" list="tagsAndTopics" placeholder="type a tag or a topic" aria-label="Search" aria-describedby="search-addon" />
+            <datalist id="tagsAndTopics">
+                <?php
+                $tagsAndTopics = getTopics();
+                for ($n = 0; $n < count($tagsAndTopics); $n++) {
+                    echo '<option value="' . $tagsAndTopics[$n] . '">'; // Вывод уже существующих тегов и "областей знаний"
+                }
 
-			<label for="channel">Channel: </label>
-			<input id="channel" list="channels" name="channel" placeholder="default channel">
+                ?>
+            </datalist>
+        </div>
 
-			<datalist id="channels">
+        <label for="channel">Channel: </label>
+        <input id="channel" list="channels" name="channel" placeholder="default channel">
 
-				<?php
-				$channels = getChannels();
-				for ($n = 0; $n < count($channels); $n++) {
-					echo '<option value="' . $channels[$n] . '">'; // Вывод уже существующих тегов
-				}
-				?>
+        <datalist id="channels">
 
-			</datalist>
+            <?php
+            $channels = getChannels();
+            for ($n = 0; $n < count($channels); $n++) {
+                echo '<option value="' . $channels[$n] . '">'; // Вывод уже существующих тегов
+            }
+            ?>
 
-			<div class="d-flex justify-content-center">
-				<button type="button" class="btn btn-outline-primary">search</button>
-			</div>
-			<div class="mt-2 border border-2 ps-3">
-				<?php
-				echo "thread with all the messages in there" // Все доступные сообщения здесь 
-				?>
+        </datalist>
 
-			</div>
-		</div>
-	</main>
+        <div class="d-flex justify-content-center">
+            <a type="button" class="btn btn-outline-primary" href="./results.php">search</a>
+        </div>
 
-	<!-- MDB -->
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
-	<script src="./script/script.js"></script>
+    </div>
+</main>
+
+<!-- MDB -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
+<script src="./script/script.js"></script>
 </body>
 
 </html>

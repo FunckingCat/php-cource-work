@@ -49,6 +49,7 @@
                 <datalist id="tags">
 
                     <?php
+
                     $tags = getTags();
                     for ($n = 0; $n < count($tags); $n++) {
                         echo '<option value="' . $tags[$n] . '">'; // Вывод уже существующих тегов
