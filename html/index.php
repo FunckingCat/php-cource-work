@@ -15,7 +15,6 @@
         <nav class="navbar navbar-light bg-light">
             <div class="container-fluid d-flex justify-content-center">
                 <span class="navbar-brand">PHP course work</span>
-
             </div>
         </nav>
     </header>
@@ -33,41 +32,38 @@
 
         <div class="tab-content">
             <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-                <form>
+                <form method="post" action="//httpbin.org/post">
+                    <!-- Поправить на то, что нужно -->
 
                     <div class="form-outline mb-4">
-                        <input type="text" id="loginName" class="form-control" />
-                        <label class="form-label" for="loginName">Username</label>
+                        <input type="text" id="loginUsername" name="username" class="form-control" />
+                        <label class="form-label" for="loginUsername">Username</label>
                     </div>
 
                     <div class="form-outline mb-4">
-                        <input type="password" id="loginPassword" class="form-control" />
+                        <input type="password" id="loginPassword" name="password" class="form-control" />
                         <label class="form-label" for="loginPassword">Password</label>
                     </div>
-
+                    <input type="text" name="type" value="log" style="display: none;">
                     <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
 
 
                 </form>
             </div>
             <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-                <form>
+                <form method="post" action="//httpbin.org/post">
 
                     <div class="form-outline mb-4">
-                        <input type="text" id="registerUserName" class="form-control" />
-                        <label class="form-label" for="registerName">UserName</label>
+                        <input type="text" id="registerUsername" name="username" class="form-control" />
+                        <label class="form-label" for="registerUsername">New username</label>
                     </div>
 
                     <div class="form-outline mb-4">
-                        <input type="email" id="registerEmail" class="form-control" />
-                        <label class="form-label" for="registerUsername">Email</label>
+                        <input type="password" id="registerPassword" name="password" class="form-control" />
+                        <label class="form-label" for="registerPassword">Create password</label>
                     </div>
 
-                    <div class="form-outline mb-4">
-                        <input type="password" id="registerPassword" class="form-control" />
-                        <label class="form-label" for="registerPassword">Password</label>
-                    </div>
-
+                    <input type="text" name="type" value="reg" style="display: none;">
                     <button type="submit" class="btn btn-primary btn-block mb-3">Sign Up</button>
                 </form>
             </div>

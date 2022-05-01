@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./style.scss">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet">
     <title>Docker PHP template</title>
+    <?php include './backend/get_data.php'; ?>
 </head>
 
 
@@ -18,18 +19,10 @@
             <div class="container-fluid d-flex justify-content-between">
                 <div class="d-flex">
                     <a class="navbar-brand" href="../index.php">PHP course work</a>
-                    <a type="button" class="mt-3 mb-3 btn btn-primary" href="../index.php">back to all messages</a>
+                    <a type="button" class="mt-3 mb-3 btn btn-primary" href="./search.php">back to all messages</a>
                 </div>
-                <a type="button" class="mt-4 mb-4 btn btn-primary" data-mdb-toggle="modal" href="../login_page/login.php">
-                    <?php
-                    $auth = 0;
-                    if ($auth == 0) { // Авторизация где-то здесь
-                        echo "Sign in";
-                    } else {
-                        echo "Log out";
-                    }
-
-                    ?>
+                <a type="button" class="mt-4 mb-4 btn btn-primary" data-mdb-toggle="modal" href="./index.php" \>
+                    Log out
                 </a>
             </div>
         </nav>
@@ -41,7 +34,7 @@
         <div class="container">
             <div class="d-flex justify-content-center">
                 <?php
-                echo "Hi, Username, here you can" //Имя пользователя 
+                echo "Hi, " . getCurrentUsername() . " here you can" //Имя пользователя 
                 ?>
             </div>
 
@@ -49,6 +42,7 @@
             <h2>Add message</h2>
 
             <form method="post" action="//httpbin.org/post">
+                <!-- Поставить то, что нужно -->
                 <label for="message-text" class="mt-2">message text</label>
                 <textarea class="form-control mb-2" name="message" id="message-text" style="height:10rem;" placeholder="Simple wine cake. This cake was sent home from our children's school. It is the simplest, best-tasting cake I've ever made. Great to make with the kids, especially for cupcakes."></textarea>
                 <label for="tag">tag</label>
@@ -57,9 +51,23 @@
                 <datalist id="tags">
 
                     <?php
-                    $tagsCount = 4;
-                    for ($n = 0; $n <= $tagsCount; $n++) {
-                        echo '<option value="Internet Explorer">'; // Вывод уже существующих тэгов
+                    $tags = getTags();
+                    for ($n = 0; $n < count($tags); $n++) {
+                        echo '<option value="#' . $tags[$n] . '">'; // Вывод уже существующих тегов
+                    }
+                    ?>
+
+                </datalist>
+
+                <label for="channel">channel</label>
+                <input id="channel" list="channels" name="channel" placeholder="default channel">
+
+                <datalist id="channels">
+
+                    <?php
+                    $channels = getChannels();
+                    for ($n = 0; $n < count($channels); $n++) {
+                        echo '<option value="' . $channels[$n] . '">'; // Вывод каналов
                     }
                     ?>
 
@@ -83,7 +91,6 @@
             </form>
     </main>
 
-    <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
 
     <?php include('backend/script.php') ?>

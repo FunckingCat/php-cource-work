@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,23 +10,17 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet">
 
 	<title>Docker PHP template</title>
+	<?php include './backend/get_data.php'; ?>
 </head>
+
 <body>
 
 	<header class="px-2">
 		<nav class="navbar navbar-light bg-light">
 			<div class="container-fluid">
 				<a class="navbar-brand">PHP course work</a>
-				<a type="button" class="mt-4 mb-4 btn btn-primary" data-mdb-toggle="modal" href="./login_page/login.php" \>
-					<?php
-					$auth = 0;
-					if ($auth == 0) { // Авторизация где-то здесь
-						echo "Sign in";
-					} else {
-						echo "Log out";
-					}
-
-					?>
+				<a type="button" class="mt-4 mb-4 btn btn-primary" data-mdb-toggle="modal" href="./index.php" \>
+					Log out
 				</a>
 			</div>
 		</nav>
@@ -34,7 +29,7 @@
 
 
 	<div class="d-flex justify-content-center add-link">
-		<a type="button" class="mt-2 mb-4 btn btn-primary" href="./add_message_page/add_message.php">
+		<a type="button" class="mt-2 mb-4 btn btn-primary" href="./add_message.php">
 			Add message
 		</a>
 	</div>
@@ -42,9 +37,25 @@
 		<div class="container">
 			<div class="input-group mt-2 mb-4">
 				<input type="search" class="form-control rounded" placeholder="type here a tag or a field of expertise of the message you searching" aria-label="Search" aria-describedby="search-addon" />
-				<button type="button" class="btn btn-outline-primary">search</button>
 			</div>
 
+			<label for="channel">Channel: </label>
+			<input id="channel" list="channels" name="channel" placeholder="default channel">
+
+			<datalist id="channels">
+
+				<?php
+				$channels = getChannels();
+				for ($n = 0; $n < count($channels); $n++) {
+					echo '<option value="' . $channels[$n] . '">'; // Вывод уже существующих тегов
+				}
+				?>
+
+			</datalist>
+
+			<div class="d-flex justify-content-center">
+				<button type="button" class="btn btn-outline-primary">search</button>
+			</div>
 			<div class="mt-2 border border-2 ps-3">
 				<?php
 				echo "thread with all the messages in there" // Все доступные сообщения здесь 
@@ -58,4 +69,5 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
 	<script src="./script/script.js"></script>
 </body>
+
 </html>

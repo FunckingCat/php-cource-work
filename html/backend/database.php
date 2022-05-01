@@ -38,7 +38,7 @@ function print_result($result)
 /**
  * @throws Exception
  */
-function post_message($body, $hashtag, $owner, $channel, $private=flase)
+function post_message($body, $hashtag, $owner, $channel, $private=false)
 {
     $datetime = (new DateTime("now", new DateTimeZone('Europe/Moscow')))->format('Y-m-d H:i:s');
     $connection = get_connection();
