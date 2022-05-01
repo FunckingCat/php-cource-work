@@ -1,3 +1,7 @@
+<?php 
+    include_once './backend/get_data.php'; 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +12,6 @@
     <link rel="stylesheet" href="./style.scss">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet">
     <title>Docker PHP template</title>
-    <?php include './backend/get_data.php'; ?>
 </head>
 
 
@@ -34,7 +37,7 @@
         <div class="container">
             <div class="d-flex justify-content-center">
                 <?php
-                echo "Hi, " . getCurrentUsername() . " here you can" //Имя пользователя 
+                    echo $_SESSION['username'];
                 ?>
             </div>
 
@@ -93,7 +96,6 @@
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
 
-    <?php include('backend/script.php') ?>
     <script src="./script/script.js"></script>
 </body>
 

@@ -1,6 +1,6 @@
 <?php
     session_start();
-    echo ($_SESSION['username']);
+    include './backend/get_data.php';
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +15,6 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet">
 
 	<title>Docker PHP template</title>
-	<?php include './backend/get_data.php'; ?>
 </head>
 
 <body>
