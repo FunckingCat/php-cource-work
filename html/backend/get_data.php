@@ -77,4 +77,23 @@ function getUserByName($name)
     return exec_query(sprintf('SELECT * FROM Users WHERE username = \'%s\'', $name));
 }
 
+function createChannel($channel, $userId)
+{
+    $connection = get_connection();
+    $prep = $connection->prepare('INSERT INTO Channels (name, description, owner) VALUES (?, ?, ?);');
+    $str = 'Channel without description';
+    $prep->bind_param('sss', $channel, $str,$userId);
+    $prep->execute();
+    $connection->close();
+}
+
+function createTag($tag)
+{
+    $connection = get_connection();
+    $prep = $connection->prepare('INSERT INTO Hashtags (name) VALUES (?);');
+    $prep->bind_param('s', $tag);
+    $prep->execute();
+    $connection->close();
+}
+
 ?>

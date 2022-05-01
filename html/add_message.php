@@ -39,7 +39,7 @@
 
             <h2>Add message</h2>
 
-            <form method="post" action="//httpbin.org/post">
+            <form method="post" action="./backend/post_message.php">
                 <!-- Поставить то, что нужно -->
                 <label for="message-text" class="mt-2">message text</label>
                 <textarea class="form-control mb-2" name="message" id="message-text" style="height:10rem;" placeholder="Simple wine cake. This cake was sent home from our children's school. It is the simplest, best-tasting cake I've ever made. Great to make with the kids, especially for cupcakes."></textarea>
@@ -51,7 +51,7 @@
                     <?php
                     $tags = getTags();
                     for ($n = 0; $n < count($tags); $n++) {
-                        echo '<option value="#' . $tags[$n] . '">'; // Вывод уже существующих тегов
+                        echo '<option value="' . $tags[$n] . '">'; // Вывод уже существующих тегов
                     }
                     ?>
 
