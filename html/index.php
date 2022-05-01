@@ -1,63 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./style/style.css">
-
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet">
-
-	<title>Docker PHP template</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP course work login page</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style/style.css">
 </head>
-<body>
 
-	<header class="px-2">
-		<nav class="navbar navbar-light bg-light">
-			<div class="container-fluid">
-				<a class="navbar-brand">PHP course work</a>
-				<a type="button" class="mt-4 mb-4 btn btn-primary" data-mdb-toggle="modal" href="./login_page/login.php" \>
-					<?php
-					$auth = 0;
-					if ($auth == 0) { // Авторизация где-то здесь
-						echo "Sign in";
-					} else {
-						echo "Log out";
-					}
+<body class="container">
+    <header class="px-2">
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid d-flex justify-content-center">
+                <span class="navbar-brand">PHP course work</span>
 
-					?>
-				</a>
-			</div>
-		</nav>
-	</header>
+            </div>
+        </nav>
+    </header>
+
+    <section class="login-section">
+        <!-- Pills navs -->
+        <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="tab-login" data-mdb-toggle="pill" href="#pills-login" role="tab" aria-controls="pills-login" aria-selected="true">Login</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="tab-register" data-mdb-toggle="pill" href="#pills-register" role="tab" aria-controls="pills-register" aria-selected="false">Register</a>
+            </li>
+        </ul>
+        <!-- Pills navs -->
+
+        <!-- Pills content -->
+        <div class="tab-content">
+            <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+                <form>
+
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <input type="text" id="loginName" class="form-control" />
+                        <label class="form-label" for="loginName">Username</label>
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-4">
+                        <input type="password" id="loginPassword" class="form-control" />
+                        <label class="form-label" for="loginPassword">Password</label>
+                    </div>
 
 
 
-	<div class="d-flex justify-content-center add-link">
-		<a type="button" class="mt-2 mb-4 btn btn-primary" href="./add_message_page/add_message.php">
-			Add message
-		</a>
-	</div>
-	<main class="container d-flex">
-		<div class="container">
-			<div class="input-group mt-2 mb-4">
-				<input type="search" class="form-control rounded" placeholder="type here a tag or a field of expertise of the message you searching" aria-label="Search" aria-describedby="search-addon" />
-				<button type="button" class="btn btn-outline-primary">search</button>
-			</div>
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
 
-			<div class="mt-2 border border-2 ps-3">
-				<?php
-				echo "thread with all the messages in there" // Все доступные сообщения здесь 
-				?>
 
-			</div>
-		</div>
-	</main>
+                </form>
+            </div>
+            <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+                <form>
 
-	<!-- MDB -->
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
+                    <!-- Name input -->
+                    <div class="form-outline mb-4">
+                        <input type="text" id="registerName" class="form-control" />
+                        <label class="form-label" for="registerName">Name</label>
+                    </div>
 
-	<?php include('backend/script.php') ?>
-	<script src="./script/script.js"></script>
+                    <!-- Username input -->
+                    <div class="form-outline mb-4">
+                        <input type="text" id="registerUsername" class="form-control" />
+                        <label class="form-label" for="registerUsername">Username</label>
+                    </div>
+
+                    <!-- Password input -->
+                    <div class="form-outline mb-4">
+                        <input type="password" id="registerPassword" class="form-control" />
+                        <label class="form-label" for="registerPassword">Password</label>
+                    </div>
+
+                    <!-- Repeat Password input -->
+                    <div class="form-outline mb-4">
+                        <input type="password" id="registerRepeatPassword" class="form-control" />
+                        <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+                    </div>
+
+
+
+                    <!-- Submit button -->
+                    <button type="submit" class="btn btn-primary btn-block mb-3">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Pills content -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
+
 </body>
+
 </html>
