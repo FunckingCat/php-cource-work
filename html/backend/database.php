@@ -1,5 +1,10 @@
 <?php
 
+function add_quotes($string)
+{
+    return '\'' . $string . '\'';
+}
+
 function get_connection()
 {
     $host = 'mysql';

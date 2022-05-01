@@ -1,4 +1,3 @@
-
 <?php
 
 function getChannels () { // Возвращает список всех существующих каналов
@@ -19,7 +18,7 @@ function getCurrentUsername () { // Возвращает имя пользова
 
 function getMessagesByChannelName ($name) {
     
-    $body = 'I\'m beginnin\' to feel like a Rap God';
+    $body = 'I\'m beginning\' to feel like a Rap God';
     $hashtag = 'songs_lyrics';
     $owner = 'Eminem';
     $channel = 'rap';
@@ -28,8 +27,15 @@ function getMessagesByChannelName ($name) {
     $message1 = [$body, $hashtag, $owner, $channel, $private=false];
     $message2 = ['usually i\'m drug-free, but, shit, i\'m with the homies ', 'songs_lyrics', 'Kendrick Lamar', 'rap', false];
 
-    $messages = [$message1, $message2];
-    return $messages;
+    return [$message1, $message2];
 }
 
+function addUser($username, $login, $password)
+{
+    $connection = get_connection();
+    $prep = $connection->prepare('INSERT INTO Users (email, username, password) VALUES (?, ?, ?);');
+    $prep->bind_param('sss', $login, $username, $password);
+    $prep->execute();
+    $connection->close();
+}
 ?>

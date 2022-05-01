@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,12 +36,11 @@
 
         <div class="tab-content">
             <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-                <form method="post" action="//httpbin.org/post">
-                    <!-- Поправить на то, что нужно -->
+                <form method="post" action="./backend/registration.php">
 
                     <div class="form-outline mb-4">
-                        <input type="text" id="loginUsername" name="username" class="form-control" />
-                        <label class="form-label" for="loginUsername">Username</label>
+                        <input type="email" id="loginUsername" name="email" class="form-control" />
+                        <label class="form-label" for="loginUsername">Login (email)</label>
                     </div>
 
                     <div class="form-outline mb-4">
@@ -47,15 +50,19 @@
                     <input type="text" name="type" value="log" style="display: none;">
                     <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
 
-
                 </form>
             </div>
             <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-                <form method="post" action="//httpbin.org/post">
+                <form method="post" action="./backend/registration.php">
 
                     <div class="form-outline mb-4">
                         <input type="text" id="registerUsername" name="username" class="form-control" />
                         <label class="form-label" for="registerUsername">New username</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                        <input type="email" id="registerUsername" name="email" class="form-control" />
+                        <label class="form-label" for="registerUsername">Email</label>
                     </div>
 
                     <div class="form-outline mb-4">
