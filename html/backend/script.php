@@ -1,22 +1,7 @@
 <?php
 
-$conn = new mysqli("mysql", "root", "root", "datab");
-// Check connection
-if ($conn->connect_error) {
-	die("Connection failed: " . $conn->connect_error);
-}
+include 'database.php';
 
-$sql = "SELECT name FROM users";
-$result = $conn->query($sql);
+print_result(getUserByName('admin'));
 
-if ($result->num_rows > 0) {
-	// output data of each row
-	while($row = $result->fetch_assoc()) {
-		echo $row['name']."<br>";
-	}
-} else {
-	echo "0 results";
-}
-$conn->close();
-
-phpinfo();
+//phpinfo();

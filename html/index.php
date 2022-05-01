@@ -30,8 +30,6 @@
 		</nav>
 	</header>
 
-
-
 	<div class="d-flex justify-content-center add-link">
 		<a type="button" class="mt-2 mb-4 btn btn-primary" href="./add_message_page/add_message.php">
 			Add message
@@ -46,7 +44,7 @@
 
 			<div class="mt-2 border border-2 ps-3">
 				<?php
-				echo "thread with all the messages in there" // Все доступные сообщения здесь 
+				  echo "thread with all the messages in there" // Все доступные сообщения здесь 
 				?>
 
 			</div>
@@ -55,9 +53,8 @@
 
 	<!-- MDB -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
-
-	<?php include('backend/script.php') ?>
 	<script src="./script/script.js"></script>
+
 </body>
 
 </html>
