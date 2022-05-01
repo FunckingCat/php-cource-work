@@ -22,7 +22,7 @@
         <nav class="navbar navbar-light bg-light">
             <div class="container-fluid d-flex justify-content-between">
                 <div class="d-flex">
-                    <a class="navbar-brand" href="../index.php">PHP course work</a>
+                    <a class="navbar-brand" href="../index.php"><?php echo $_SESSION['username']; ?></a>
                     <a type="button" class="mt-3 mb-3 btn btn-primary" href="./search.php">back to all messages</a>
                 </div>
                 <a type="button" class="mt-4 mb-4 btn btn-primary" data-mdb-toggle="modal" href="./index.php" \>
@@ -36,12 +36,6 @@
     <main class="container d-flex mt-10">
 
         <div class="container">
-            <div class="d-flex justify-content-center">
-                <?php
-                    echo $_SESSION['username'];
-                ?>
-            </div>
-
 
             <h2>Add message</h2>
 

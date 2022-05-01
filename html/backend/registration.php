@@ -35,7 +35,7 @@
             header('Location: ../index.php');
             else{
                 $_SESSION['userId'] = $row['id'];
-                $_SESSION['username'] = $username;
+                $_SESSION['username'] = $row['username'];
                 $_SESSION['login'] = $login;
                 header('Location: ../search.php');
             }

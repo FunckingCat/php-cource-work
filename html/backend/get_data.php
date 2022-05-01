@@ -3,21 +3,26 @@
 include_once 'database.php';
 
 function getChannels () { // Возвращает список всех существующих каналов
-    $channelsList = ['channel name 1', 'channel name 2', 'channel name 3']; 
-    return $channelsList; 
+    $result = exec_query('SELECT name FROM Channels;');
+    $res = [];
+    while($row = $result->fetch_assoc()) {
+        $res[] = $row['name'];
+    }
+    return $res;
 }
 
 
 function getTags () { // Возвращает список всех существующих в базе тэгов
-    $tagsList = ['tag1', 'tag2', 'tag3'];
-
-    $sql = exec_query('SELECT');
-    return $tagsList;
+    $result = exec_query('SELECT name FROM Hashtags;');
+    $res = [];
+    while($row = $result->fetch_assoc()) {
+        $res[] = $row['name'];
+    }
+    return $res;
 }
 
 function getCurrentUsername () { // Возвращает имя пользователя текущей сессии (опционально, можно вырезать)
-    $currentUsername = 'Богдан';
-    return $currentUsername;
+    return 'Богдан';
 }
 
 function getMessages($channelName = '', $tag = '')
@@ -37,8 +42,7 @@ function getMessages($channelName = '', $tag = '')
         'private' => 'false'
     ];
 
-    $messages = [$message1, $message2];
-    return $messages;
+    return [$message1, $message2];
 }
 
 function addUser($username, $login, $password)
@@ -49,4 +53,28 @@ function addUser($username, $login, $password)
     $prep->execute();
     $connection->close();
 }
+
+/**
+ * @throws Exception
+ */
+function post_message($body, $hashtag, $owner, $channel, $private=false)
+{
+    $datetime = (new DateTime("now", new DateTimeZone('Europe/Moscow')))->format('Y-m-d H:i:s');
+    $connection = get_connection();
+    $prep = $connection->prepare('INSERT INTO Messages (body, dispatch_time, private, hashtag, owner, channel) VALUES (?, ?, ?, ?, ?, ?);');
+    $prep->bind_param('ssisss', $body, $datetime, $private, $hashtag, $owner, $channel);
+    $prep->execute();
+    $connection->close();
+}
+
+function getUserById($id)
+{
+    return exec_query(sprintf('SELECT * FROM Users WHERE id = %d', $id));
+}
+
+function getUserByName($name)
+{
+    return exec_query(sprintf('SELECT * FROM Users WHERE username = \'%s\'', $name));
+}
+
 ?>
