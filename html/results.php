@@ -32,7 +32,9 @@
 
     <div class="mt-2 border border-2 ps-3">
         <?php
-        $messages = getMessagesByChannelName();
+        $channelName = 'rap';
+        $messages = getMessagesByChannelName(); //
+        
         ?>
 
     </div>
