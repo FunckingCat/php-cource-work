@@ -5,16 +5,13 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="./style/style.css">
-<<<<<<< Updated upstream
-=======
+
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet">
->>>>>>> Stashed changes
+
 	<title>Docker PHP template</title>
 </head>
 <body>
-<<<<<<< Updated upstream
-	Hello world!
-=======
+
 	<header class="px-2">
 		<nav class="navbar navbar-light bg-light">
 			<div class="container-fluid">
@@ -60,7 +57,6 @@
 	<!-- MDB -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
 
->>>>>>> Stashed changes
 	<?php include('backend/script.php') ?>
 	<script src="./script/script.js"></script>
 </body>
