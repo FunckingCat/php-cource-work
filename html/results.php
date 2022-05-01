@@ -1,3 +1,8 @@
+<?php
+    session_start();
+    include './backend/get_data.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +15,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css" rel="stylesheet">
 
     <title>Docker PHP template</title>
-    <?php include './backend/get_data.php'; ?>
 </head>
 
 <body>

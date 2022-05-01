@@ -1,5 +1,7 @@
 <?php
 
+include_once 'database.php';
+
 function getChannels () { // Возвращает список всех существующих каналов
     $channelsList = ['channel name 1', 'channel name 2', 'channel name 3']; 
     return $channelsList; 

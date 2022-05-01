@@ -1,5 +1,6 @@
 <?php
     session_start();
+    include './backend/get_data.php';
 ?>
 
 <!DOCTYPE html>
