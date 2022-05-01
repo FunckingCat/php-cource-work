@@ -30,13 +30,14 @@
     </header>
 
 
-    <div class="mt-2 border border-2 ps-3">
+    <div class="mt-7 border border-2 ps-3">
         <?php
         $channelName = 'rap';
-        $messages = getMessagesByChannelName(); //
-        
+        $messages = getMessages($channelName);
+        for ($n = 0; $n < count($messages); $n++) {
+            echo '<div class="mt-2 border border_2 ">' . $messages[$n]['owner'] . ', #' . $messages[$n]['hashtag'] . ' : "' . $messages[$n]['body'] . '"</div>';
+        }
         ?>
-
     </div>
 
 

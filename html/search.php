@@ -56,12 +56,7 @@
 			<div class="d-flex justify-content-center">
 				<button type="button" class="btn btn-outline-primary">search</button>
 			</div>
-			<div class="mt-2 border border-2 ps-3">
-				<?php
-				echo "thread with all the messages in there" // Все доступные сообщения здесь 
-				?>
 
-			</div>
 		</div>
 	</main>
 

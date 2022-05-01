@@ -33,30 +33,4 @@ function print_result($result)
         echo "0 results";
     }
 }
-
-
-/**
- * @throws Exception
- */
-function post_message($body, $hashtag, $owner, $channel, $private=false)
-{
-    $datetime = (new DateTime("now", new DateTimeZone('Europe/Moscow')))->format('Y-m-d H:i:s');
-    $connection = get_connection();
-    $prep = $connection->prepare('INSERT INTO Messages (body, dispatch_time, private, hashtag, owner, channel) VALUES (?, ?, ?, ?, ?, ?);');
-    $prep->bind_param('ssisss', $body, $datetime, $private, $hashtag, $owner, $channel);
-    $prep->execute();
-    $connection->close();
-}
-
-///
-/// USER
-///
-function getUserById($id)
-{
-    return exec_query(sprintf('SELECT * FROM Users WHERE id = %d', $id));
-}
-
-function getUserByName($name)
-{
-    return exec_query(sprintf('SELECT * FROM Users WHERE username = \'%s\'', $name));
-}
+?>
