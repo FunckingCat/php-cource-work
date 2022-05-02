@@ -47,9 +47,9 @@ CREATE TABLE Messages (
 CREATE TABLE TopicHashtags (
     id SERIAL PRIMARY KEY,
     hashtag BIGINT UNSIGNED,
-    channel BIGINT UNSIGNED,
+    topic BIGINT UNSIGNED,
     FOREIGN KEY (hashtag) REFERENCES Hashtags(id) ON DELETE CASCADE,
-    FOREIGN KEY (channel) REFERENCES Channels(id) ON DELETE CASCADE
+    FOREIGN KEY (topic) REFERENCES Topics(id) ON DELETE CASCADE
 );
 
 
