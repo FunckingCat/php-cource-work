@@ -89,8 +89,8 @@ FROM Messages
          JOIN Hashtags H ON Messages.hashtag = H.id
          JOIN Users U ON Messages.owner = U.id
          JOIN Channels C ON Messages.channel = C.id ' .
-        'WHERE C.id = ' . getChannelByName($channel)->fetch_assoc()['id'] .
-                 ' AND H.id = ' . getTagByName($tag)->fetch_assoc()['id'] . '
+                'WHERE C.id = ' . getChannelByName($channel)->fetch_assoc()['id'] .
+                ' AND H.id = ' . getTagByName($tag)->fetch_assoc()['id'] . '
      ORDER BY dispatch_time DESC');
 
         } elseif (!$tag && $topic) { //Поиск по каналу и топику
@@ -100,15 +100,45 @@ AND T.id = ' . getTopicByName($topic)->fetch_assoc()['id'] . '
      ORDER BY dispatch_time DESC');
         }
 
-        if ($result) {
-            while ($row = $result->fetch_assoc()) {
-                $res[] = $row;
-            }
-        } else {
-            return 0;
-        }
-    }
 
+    } elseif ($tag && !$topic && !$channel) { //Поиск только по тегу
+        $result = exec_query('SELECT body, username, c.name AS channel, h.name AS hashtag, dispatch_time
+FROM Messages
+         JOIN Hashtags H ON Messages.hashtag = H.id
+         JOIN Users U ON Messages.owner = U.id
+         JOIN Channels C ON Messages.channel = C.id
+WHERE Messages.hashtag = ' . getTagByName($tag)->fetch_assoc()['id'] . ' 
+ORDER BY dispatch_time DESC');
+
+    } elseif (!$tag && $topic && !$channel) { //Поиск только по топику
+        $result = exec_query('SELECT body, username, c.name AS channel, h.name AS hashtag, title AS topic, t.id AS topic_id, dispatch_time
+FROM Messages
+         JOIN Hashtags H ON Messages.hashtag = H.id
+         JOIN Users U ON Messages.owner = U.id
+         JOIN Channels C ON Messages.channel = C.id
+         JOIN TopicHashtags TH ON Messages.hashtag = TH.hashtag
+         JOIN Topics T ON TH.topic = T.id 
+            WHERE T.id = ' . getTopicByName($topic)->fetch_assoc()['id'] .
+            ' ORDER BY dispatch_time DESC');
+    } elseif ($tag && $topic && !$channel) { //Поиск только по топику
+        $result = exec_query('SELECT body, username, c.name AS channel, h.name AS hashtag, title AS topic, t.id AS topic_id, dispatch_time
+FROM Messages
+         JOIN Hashtags H ON Messages.hashtag = H.id
+         JOIN Users U ON Messages.owner = U.id
+         JOIN Channels C ON Messages.channel = C.id
+         JOIN TopicHashtags TH ON Messages.hashtag = TH.hashtag
+         JOIN Topics T ON TH.topic = T.id 
+            WHERE T.id = ' . getTopicByName($topic)->fetch_assoc()['id'] .
+            ' AND H.id = ' . getTagByName($tag)->fetch_assoc()['id'] .
+            ' ORDER BY dispatch_time DESC');
+    }
+    if ($result) {
+        while ($row = $result->fetch_assoc()) {
+            $res[] = $row;
+        }
+    } else {
+        return 0;
+    }
 
     return $res;
 }
