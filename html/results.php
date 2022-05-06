@@ -38,8 +38,8 @@ include './backend/get_data.php';
     <?php
 
 
+    $errors = 0;
     if ($_POST['channel']) { // Если канал существует/несуществует
-        $errors = 0;
         $channels = getChannels();
         if (in_array($_POST['channel'], $channels)) {
             $channelInfo = getChannelByName($_POST['channel'])->fetch_assoc();
