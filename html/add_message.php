@@ -93,6 +93,9 @@
 
                 <button type="submit" class="btn btn-block btn-success">Add</button>
             </form>
+            <a type="button" class="mt-2 mb-4 btn btn-dark btn-block" href="./search.php">
+                Back
+            </a>
     </main>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>

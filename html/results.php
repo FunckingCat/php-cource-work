@@ -35,7 +35,10 @@ include './backend/get_data.php';
 </header>
 
 
-<div class="mt-7 ps-3 container d-flex flex-wrap align-items-center justify-content-center">
+<div class="mt-7 ps-3 container d-flex flex-wrap align-items-start justify-content-center">
+    <a type="button" class="mt-2 mb-4 btn btn-success btn-block" href="./search.php">
+        Back
+    </a>
     <?php
 
 
