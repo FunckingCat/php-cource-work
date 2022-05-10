@@ -19,13 +19,14 @@
 
 <body>
     <header class="px-2">
-        <nav class="navbar navbar-light bg-light">
-            <div class="container-fluid d-flex justify-content-between">
-                <div class="d-flex">
-                    <a class="navbar-brand" href="../index.php"><?php echo $_SESSION['username']; ?></a>
-                    <a type="button" class="mt-3 mb-3 btn btn-primary" href="./search.php">back to all messages</a>
-                </div>
-                <a type="button" class="mt-4 mb-4 btn btn-primary" data-mdb-toggle="modal" href="./index.php" \>
+        <nav class="navbar navbar-dark bg-dark rounded">
+            <div class="container-fluid">
+                <a class="navbar-brand">
+                    <?php
+                        echo $_SESSION['username'] . " | " . $_SESSION['login'];
+                    ?>
+                </a>
+                <a type="button" class="mt-4 mb-4 btn btn-success" data-mdb-toggle="modal" href="./index.php" \>
                     Log out
                 </a>
             </div>
