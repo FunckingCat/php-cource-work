@@ -16,65 +16,48 @@
 </head>
 
 <body class="container">
-    <header class="px-2">
-        <nav class="navbar navbar-light bg-light">
-            <div class="container-fluid d-flex justify-content-center">
-                <span class="navbar-brand">PHP course work</span>
-            </div>
-        </nav>
-    </header>
-
-    <section class="login-section">
+    <section class="login-section min-vh-100 d-flex justify-content-center align-items-center m-0">
         <!-- Pills navs -->
-        <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
-            <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="tab-login" data-mdb-toggle="pill" href="#pills-login" role="tab" aria-controls="pills-login" aria-selected="true">Login</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="tab-register" data-mdb-toggle="pill" href="#pills-register" role="tab" aria-controls="pills-register" aria-selected="false">Register</a>
-            </li>
-        </ul>
 
-        <div class="tab-content">
-            <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
-                <form method="post" action="./backend/registration.php">
+        <div class="">
+            <h1>Войти</h1>
+            <form method="post" action="./backend/registration.php">
 
-                    <div class="form-outline mb-4">
-                        <input type="email" id="loginUsername" name="email" class="form-control" />
-                        <label class="form-label" for="loginUsername">Login (email)</label>
-                    </div>
+                <div class="form-outline mb-4">
+                    <input type="email" id="loginUsername" name="email" class="form-control" />
+                    <label class="form-label" for="loginUsername">Login (email)</label>
+                </div>
 
-                    <div class="form-outline mb-4">
-                        <input type="password" id="loginPassword" name="password" class="form-control" />
-                        <label class="form-label" for="loginPassword">Password</label>
-                    </div>
-                    <input type="text" name="type" value="log" style="display: none;">
-                    <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+                <div class="form-outline mb-4">
+                    <input type="password" id="loginPassword" name="password" class="form-control" />
+                    <label class="form-label" for="loginPassword">Password</label>
+                </div>
+                <input type="text" name="type" value="log" style="display: none;">
+                <button type="submit" class="btn btn-dark btn-block mb-4">Войти</button>
 
-                </form>
-            </div>
-            <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
-                <form method="post" action="./backend/registration.php">
+            </form>
+            <hr>
+            <h1>Зарегистрироваться</h1>
+            <form method="post" action="./backend/registration.php">
 
-                    <div class="form-outline mb-4">
-                        <input type="text" id="registerUsername" name="username" class="form-control" />
-                        <label class="form-label" for="registerUsername">New username</label>
-                    </div>
+                <div class="form-outline mb-4">
+                    <input type="text" id="registerUsername" name="username" class="form-control" />
+                    <label class="form-label" for="registerUsername">New username</label>
+                </div>
 
-                    <div class="form-outline mb-4">
-                        <input type="email" id="registerUsername" name="email" class="form-control" />
-                        <label class="form-label" for="registerUsername">Email</label>
-                    </div>
+                <div class="form-outline mb-4">
+                    <input type="email" id="registerUsername" name="email" class="form-control" />
+                    <label class="form-label" for="registerUsername">Email</label>
+                </div>
 
-                    <div class="form-outline mb-4">
-                        <input type="password" id="registerPassword" name="password" class="form-control" />
-                        <label class="form-label" for="registerPassword">Create password</label>
-                    </div>
+                <div class="form-outline mb-4">
+                    <input type="password" id="registerPassword" name="password" class="form-control" />
+                    <label class="form-label" for="registerPassword">Create password</label>
+                </div>
 
-                    <input type="text" name="type" value="reg" style="display: none;">
-                    <button type="submit" class="btn btn-primary btn-block mb-3">Sign Up</button>
-                </form>
-            </div>
+                <input type="text" name="type" value="reg" style="display: none;">
+                <button type="submit" class="btn btn-dark btn-block mb-3">Зарегистрироваться</button>
+            </form>
         </div>
     </section>
 
