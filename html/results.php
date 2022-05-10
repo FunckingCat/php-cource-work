@@ -35,7 +35,7 @@ include './backend/get_data.php';
 </header>
 
 
-<div class="mt-7 ps-3 container">
+<div class="mt-7 ps-3 container d-flex flex-wrap align-items-center justify-content-center">
     <?php
 
 
@@ -84,25 +84,29 @@ include './backend/get_data.php';
         return 0;
     }
     for ($n = 0; $n < count($messages); $n++): ?>
-        <div class="mt-3 border border_2 d-flex">
-            <div class="border border_2 d-flex flex-column w-22">
-                <div><?php echo 'in ' . $messages[$n]['channel'] ?></div>
-                <div><?php echo 'User: ' . $messages[$n]['username'] ?></div>
-                <div><?php echo 'at ' . $messages[$n]["dispatch_time"] ?></div>
-                <div><?php echo ' #' . $messages[$n]['hashtag'] ?></div>
+        <div class="card text-white bg-dark m-2" style="width: 18rem;">
+            <div class="card-header">
+                <?php echo $messages[$n]['channel'] ?>
+                <?php echo ' #' . $messages[$n]['hashtag'] ?>
             </div>
-            <div class=" "><?php echo $messages[$n]['body'] ?></div>
+            <div class="card-body text-dark">
+                <div class="card-text text-white"><?php echo $messages[$n]['body'] ?></div>
+                <div class="card-text"><small class="text-muted"><?php echo 'User: ' . $messages[$n]['username'] ?></small></div>
+                <div class="card-text"><small class="text-muted"><?php echo 'at ' . $messages[$n]["dispatch_time"] ?></small></div>
+            </div>
         </div>
     <?php endfor; ?>
 </div>
 
-<div class="card border-dark mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
+<!-- <div class="card border-dark mb-3" style="max-width: 18rem;">
+  <div class="card-header"><?php echo 'Channel: ' . $messages[$n]['channel'] ?></div>
   <div class="card-body text-dark">
-    <h5 class="card-title">Dark card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <h5 class="card-title"><?php echo 'Hashtag: ' . $messages[$n]['hashtag'] ?></h5>
+    <p class="card-text"><?php echo $messages[$n]['body'] ?></p>
+    <p class="card-text"><small class="text-muted"><?php echo 'User: ' . $messages[$n]['username'] ?></small></p>
+    <p class="card-text"><small class="text-muted"><?php echo 'at ' . $messages[$n]["dispatch_time"] ?></small></p>
   </div>
-</div>
+</div> -->
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
 <script src="./script/script.js"></script>
