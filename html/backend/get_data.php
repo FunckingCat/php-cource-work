@@ -41,7 +41,7 @@ function getMessages($channel = '', $tag = '', $topic = '')
 {
     $result = '';
     $mainRequest = '
-SELECT body, username, c.name AS channel, h.name AS hashtag, title AS topic, t.id AS topic_id, dispatch_time
+SELECT body, username, C.name AS channel, H.name AS hashtag, title AS topic, T.id AS topic_id, dispatch_time
 FROM Messages
          JOIN Hashtags H ON Messages.hashtag = H.id
          JOIN Users U ON Messages.owner = U.id
@@ -50,7 +50,7 @@ FROM Messages
          JOIN Topics T ON TH.topic = T.id '; //Пробел в конце очень важен
 
     $mainRequestSmall = '
-SELECT body, username, c.name AS channel, h.name AS hashtag, dispatch_time
+SELECT body, username, C.name AS channel, H.name AS hashtag, dispatch_time
 FROM Messages
          JOIN Hashtags H ON Messages.hashtag = H.id
          JOIN Users U ON Messages.owner = U.id
