@@ -21,10 +21,14 @@ include './backend/get_data.php';
 <body>
 
 <header class="px-2">
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-dark bg-dark rounded">
         <div class="container-fluid">
-            <a class="navbar-brand">PHP course work</a>
-            <a type="button" class="mt-4 mb-4 btn btn-primary" data-mdb-toggle="modal" href="./index.php" \>
+            <a class="navbar-brand">
+                <?php
+                    echo $_SESSION['username'] . " | " . $_SESSION['login'];
+                ?>
+            </a>
+            <a type="button" class="mt-4 mb-4 btn btn-success" data-mdb-toggle="modal" href="./index.php" \>
                 Log out
             </a>
         </div>
@@ -32,42 +36,36 @@ include './backend/get_data.php';
 </header>
 
 
-<div class="d-flex justify-content-center add-link">
-    <a type="button" class="mt-2 mb-4 btn btn-primary" href="./add_message.php">
-        Add message
-    </a>
-</div>
-<main class="container d-flex">
-    <div class="container">
-        <form method="post" action="./results.php">
-            <div class="input-group mt-2 mb-4">
-                <input type="search" class="form-control rounded" list="tags" placeholder="type a tag"
-                       aria-label="Search" aria-describedby="search-addon" name="tag"/>
-                <datalist id="tags">
-                    <?php
-                    $tags = getTags();
-                    for ($n = 0; $n < count($tags); $n++) {
-                        echo '<option value="' . $tags[$n] . '">'; // Вывод уже существующих тегов и "областей знаний"
-                    }
-                    ?>
-                </datalist>
-            </div>
+<main class="container d-flex flex-column">
+    <form method="post" action="./results.php">
+        <div class="input-group mt-2 mb-4">
+            <input type="search" class="form-control rounded" list="tags" placeholder="Select or input tag"
+                    aria-label="Search" aria-describedby="search-addon" name="tag"/>
+            <datalist id="tags">
+                <?php
+                $tags = getTags();
+                for ($n = 0; $n < count($tags); $n++) {
+                    echo '<option value="' . $tags[$n] . '">'; // Вывод уже существующих тегов и "областей знаний"
+                }
+                ?>
+            </datalist>
+        </div>
 
-            <div class="input-group mt-2 mb-4">
-                <input type="search" class="form-control rounded" list="topics" placeholder="type a topic"
-                       aria-label="Search" aria-describedby="search-addon" name="topic"/>
-                <datalist id="topics">
-                    <?php
-                    $topics = getTopics();
-                    for ($n = 0; $n < count($topics); $n++) {
-                        echo '<option value="' . $topics[$n] . '">'; // Вывод уже существующих тегов и "областей знаний"
-                    }
-                    ?>
-                </datalist>
-            </div>
+        <div class="input-group mt-2 mb-4">
+            <input type="search" class="form-control rounded" list="topics" placeholder="Select or input topic"
+                    aria-label="Search" aria-describedby="search-addon" name="topic"/>
+            <datalist id="topics">
+                <?php
+                $topics = getTopics();
+                for ($n = 0; $n < count($topics); $n++) {
+                    echo '<option value="' . $topics[$n] . '">'; // Вывод уже существующих тегов и "областей знаний"
+                }
+                ?>
+            </datalist>
+        </div>
 
-            <label for="channel">Channel: </label>
-            <input id="channel" list="channels" name="channel" placeholder="default channel">
+        <div class="input-group mt-2 mb-4">
+            <input id="channel" type="search" class="form-control rounded" list="channels" name="channel" placeholder="Select channel">
 
             <datalist id="channels">
 
@@ -77,14 +75,13 @@ include './backend/get_data.php';
                     echo '<option value="' . $channels[$n] . '">'; // Вывод уже существующих тегов
                 }
                 ?>
-
             </datalist>
-
-            <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary">Search</button>
-            </div>
-        </form>
-    </div>
+        </div>
+        <button type="submit" class="btn btn-dark btn-block">Search</button>
+    </form>
+    <a type="button" class="mt-2 mb-4 btn btn-success btn-block" href="./add_message.php">
+        Add message
+    </a>
 </main>
 
 <!-- MDB -->
