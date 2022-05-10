@@ -34,60 +34,64 @@
     </header>
 
 
-    <main class="container d-flex mt-10">
+    <main class="container d-flex mt-2">
 
         <div class="container">
 
-            <h2>Add message</h2>
+            <h2>New message</h2>
 
             <form method="post" action="./backend/post_message.php">
-                <!-- Поставить то, что нужно -->
-                <label for="message-text" class="mt-2">message text</label>
-                <textarea class="form-control mb-2" name="message" id="message-text" style="height:10rem;" placeholder="Simple wine cake. This cake was sent home from our children's school. It is the simplest, best-tasting cake I've ever made. Great to make with the kids, especially for cupcakes."></textarea>
-                <label for="tag">tag</label>
-                <input id="tag" list="tags" name="tag" placeholder="cake">
 
-                <datalist id="tags">
-
-                    <?php
-
-                    $tags = getTags();
-                    for ($n = 0; $n < count($tags); $n++) {
-                        echo '<option value="' . $tags[$n] . '">'; // Вывод уже существующих тегов
-                    }
-                    ?>
-
-                </datalist>
-
-                <label for="channel">channel</label>
-                <input id="channel" list="channels" name="channel" placeholder="default channel">
-
-                <datalist id="channels">
-
-                    <?php
-                    $channels = getChannels();
-                    for ($n = 0; $n < count($channels); $n++) {
-                        echo '<option value="' . $channels[$n] . '">'; // Вывод каналов
-                    }
-                    ?>
-
-                </datalist>
-
-                <div class="form-check my-2">
-                    <input class="form-check-input" type="radio" name="message-type" id="public" value="public" checked>
-                    <label class="form-check-label" for="public">
-                        Public message
-                    </label>
+                <div class="input-group mt-2 mb-4 d-flex flex-column">
+                    <label for="tag">Tag</label>
+                    <input id="tag" class="w-100 form-control rounded" list="tags" name="tag" placeholder="Select tag or make new one" required>
+                    <datalist id="tags">
+                        <?php
+                        $tags = getTags();
+                        for ($n = 0; $n < count($tags); $n++) {
+                            echo '<option value="' . $tags[$n] . '">';
+                        }
+                        ?>
+                    </datalist>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="message-type" id="private" value="private">
-                    <label class="form-check-label" for="private">
-                        Private message
-                    </label>
+                <div class="input-group mt-2 mb-4 d-flex flex-column">
+                    <label for="channel">Channel</label>
+                    <input id="channel" class="w-100 form-control rounded" list="channels" name="channel" placeholder="Select channel or make new one" required>
+
+                    <datalist id="channels">
+
+                        <?php
+                        $channels = getChannels();
+                        for ($n = 0; $n < count($channels); $n++) {
+                            echo '<option value="' . $channels[$n] . '">'; // Вывод каналов
+                        }
+                        ?>
+
+                    </datalist>
                 </div>
-                <div class="">
-                    <button type="submit" class="btn btn-primary">Add</button>
+
+                <div class="input-group mt-2 mb-4 d-flex flex-column">
+                    <label for="message-text" class="mt-2">Message</label>
+                    <textarea class="form-control w-100 mb-2" name="message" id="message-text" style="height:10rem;" required
+                    placeholder="Дорогой дневник, мне не подобрать слов, чтобы описать боль и унижение, которое я испытал сегодня..."></textarea>
                 </div>
+                    
+                <div class="d-flex align-items-center justify-content-around my-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="message-type" id="public" value="public" checked>
+                        <label class="form-check-label" for="public">
+                            Public
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="message-type" id="private" value="private">
+                        <label class="form-check-label" for="private">
+                            Private message
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-block btn-success">Add</button>
             </form>
     </main>
 
